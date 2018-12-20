@@ -1,0 +1,14 @@
+.sfqr-bar {
+  position: relative;
+  width: 467px;
+  height: 284px;
+}
+.sfqr-bar img {
+  position: absolute;
+  top: 61px;
+  left: 47px;
+}
+.sfqr-bar #sfqr-bars {
+  width: 467px;
+  height: 284px;
+}

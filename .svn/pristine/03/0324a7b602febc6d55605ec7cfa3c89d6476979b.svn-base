@@ -1,0 +1,14 @@
+.znzx-line {
+  position: relative;
+  width: 467px;
+  height: 284px;
+}
+.znzx-line img {
+  position: absolute;
+  top: 59px;
+  left: 53px;
+}
+.znzx-line #znzx-lines {
+  width: 467x;
+  height: 284px;
+}

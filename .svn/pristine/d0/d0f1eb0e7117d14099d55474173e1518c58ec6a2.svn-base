@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ODR大屏</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	
+	<!-- 公用地址 -->
+	<script src="js/api.js"></script>
+	<script src="js/common/util.js"></script>
+	
+	<!-- ajax请求 -->
+	<script src="js/common/common.js"></script>
+	<script src="js/echarts.js"></script>
+	<!-- 路由 -->
+	<script type="text/javascript" src="js/routes.js"></script>
+	<!-- 首页获取数据 -->
+	<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+	<canvas id="bubble"></canvas>
+	<div class="odr-index">
+		<!-- 头部 -->
+		<div class="odr-top"></div>
+		<!-- main 核心数据展示部分 -->
+		<div class="odr-main">
+
+			<!-- 左侧 -->
+			<div class="odr-left">
+				<ul class="ul-content">
+					<li class="li-content">
+						<span class="li-content-title">矛盾纠纷调处情况</span>
+						<div class="container" id="mdjfdcqk"></div>
+					</li>
+					<li class="li-content">
+						<span class="li-content-title">矛盾纠纷类型前五名</span>
+						<div class="container" id="mdjflxqwm"></div>
+					</li>
+					<li class="li-content">
+						<span class="li-content-title">矛盾纠纷案件来源</span>
+						<div class="container" id="mdjfajly"></div>
+					</li>
+					<li class="li-content">
+						<span class="li-content-title">优秀调解城市TOP10</span>
+						<div class="container" id="yxtjcs"></div>
+					</li>
+				</ul>
+			</div>
+			
+			<!-- 中间部分 -->
+			<div class="odr-middle">
+				<!-- 地图 -->
+				<div class="odr-middle-top" id="odr-map">
+					
+				</div>
+				<div class="odr-middle-bottom">
+					<span class="li-content-title">近一年平台访问量变化</span>
+					<div class="container" id="jynptfwlbh"></div>
+				</div>
+			</div>
+
+			<!-- 右侧部分 -->
+			<div class="odr-right">
+				<ul class="ul-content">
+					<li class="li-content active">
+						<div class="li-content-title">
+							<span>注册用户</span>
+							<span></span>
+						</div>
+						<div class="stat-data">
+							<ul class="numbers" id='zc-users'>
+								<li>0</li>
+								<li>6</li>
+								<li>6</li>
+								<li>6</li>
+								<li>6</li>
+							</ul>
+							<div class="stat-user">
+								<div class="stat-user-detail stat-user-nan">
+									<div class="stat-user-img">
+										<i></i>
+										<span>男性</span>
+									</div>
+									<span class="stat-user-span" id='man'>37%</span>
+								</div>
+								<div class="stat-user-detail stat-user-nv">
+									<div class="stat-user-img">
+										<i></i>
+										<span>女性</span>
+									</div>
+									<span class="stat-user-span" id='woman'>63%</span>
+								</div>
+							</div>
+						</div>
+						<div class="container-list">
+							<div class="container-title">
+								<span>各地平台用户量分布</span>
+							</div>
+						</div>
+						<div class="container" id="zcyh"></div>
+					</li>
+					<li class="li-content">
+						<div class="li-content-title">
+							<span>服务机构</span>
+							<span>调解员</span>
+						</div>
+						<div class="stat-data">
+							<ul class="numbers first">
+								<li>0</li>
+								<li>0</li>
+								<li>6</li>
+								<li>6</li>
+								<li>6</li>
+							</ul>
+							<ul class="numbers second">
+								<li>0</li>
+								<li>0</li>
+								<li>6</li>
+								<li>6</li>
+								<li>6</li>
+							</ul>
+						</div>
+						<div class="container-list">
+							<div class="container-title">
+								<!-- <span>金牌调解TOP 5</span> -->
+								<span class="container-head">金牌服务机构TOP 5</span>
+								<i class="container-i"></i>
+								<em class="container-em"></em>
+							</div>
+						</div>
+						<div class="container" id="fwjg"></div>
+					</li>
+					<li class="li-content">
+						<div class="li-content-title">
+							<span>法官</span>
+							<span>咨询师</span>
+						</div>
+						<div class="stat-data">
+							<ul class="numbers" id='fg-data'>
+								<li>0</li>
+								<li>0</li>
+								<li>6</li>
+								<li>6</li>
+								<li>6</li>
+							</ul>
+							<ul class="numbers" id='zxs-data'>
+								<li>0</li>
+								<li>0</li>
+								<li>6</li>
+								<li>6</li>
+								<li>6</li>
+							</ul>
+						</div>
+						<div class="container-list">
+							<div class="container-title">
+								<span>各地法官咨询师分布</span>
+							</div>
+						</div>
+						<div class="container" id="fg"></div>
+					</li>
+					<li class="li-content">
+						<div class="li-content-title">
+							<span>
+								智能咨询
+								<a>万人</a>
+							</span> 
+							<span>
+								人工咨询
+								<a>万人</a>
+							</span>
+						</div>
+						<div class="stat-data">
+							<ul class="numbers first" id="zn">
+								<li>0</li>
+								<li>0</li>
+								<li>6</li>
+								<li>6</li>
+								<li>6</li>
+							</ul>
+							<ul class="numbers second" id="rg">
+								<li>0</li>
+								<li>0</li>
+								<li>6</li>
+								<li>6</li>
+								<li>6</li>
+							</ul>
+						</div>
+						<div class="container-list">
+							<div class="container-title">
+								<span>咨询量变化分布</span>
+							</div>
+						</div>
+						<div class="container" id="znzx"></div>
+					</li>
+					<li class="li-content">
+						<div class="li-content-title">
+							<span>司法确认率</span>
+							<span>申请诉讼率</span>
+						</div>
+						<div class="stat-data">
+							<div class="stat-sfqr">
+								<span></span>
+							</div>
+							<div class="stat-sqgs">
+								<span></span>
+							</div>
+						</div>
+						<div class="container-list">
+							<div class="container-title">
+								<span>各地后续流程处理情况</span>
+							</div>
+						</div>
+						<div class="container" id="sfqrl"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<!-- 背景气泡 -->
+<script src="js/echarts/canvas.js"></script>
+<!-- 数字 -->
+<!-- <script type="text/javascript" src="js/numbers.js"></script> -->
+</html>

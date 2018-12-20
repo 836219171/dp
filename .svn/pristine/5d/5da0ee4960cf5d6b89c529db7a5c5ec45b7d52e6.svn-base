@@ -1,0 +1,55 @@
+jQuery(document).ready(function($) {
+	var judge = true;
+	$('.odr-right').on('click', '.li-content', function(event) {
+		event.preventDefault();
+		$(this).addClass('active').siblings().removeClass('active');
+	});
+
+	rightAnim();
+	$('.odr-right').hover(function() {
+		judge = false;
+	}, function() {
+		judge = true;
+	});
+	function rightAnim(){
+		var i = 0;
+		setInterval(()=>{
+			if(judge == true){
+				$('.odr-right .li-content').eq(i).addClass('active').siblings().removeClass('active');
+				i >= 4 ? i=0 : i++;
+			}
+		},2000)
+	}
+
+	// 每隔1小时请求一次
+	
+	setInterval(()=>{
+		left();
+	},30000)
+	left();
+	// 左侧数据
+	function left(){
+		commons.leftQuery({}).then(function(res){
+			// 每隔11s请求一次
+			mdjfdcqk(res);
+			mdjflxqwm(res)
+			mdjfajly(res);
+			yxdjcs(res);
+		})
+	}
+
+	setInterval(()=>{
+		right();
+	},30000)
+	right();
+	// 右侧数据
+	function right(){
+		commons.rightQuery({}).then(function(res){
+			zcyh(res);
+			fwjg(res);
+			fg(res);
+			znzx(res);
+			sfqrl(res);
+		})
+	}	
+});

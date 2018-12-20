@@ -1,0 +1,7 @@
+
+<link rel="stylesheet" href="../../css/template/middle/1zhexian.css">
+    <div class="line-Chart">
+        <img src="../../img/zhexian-bg.png">
+        <div id="middle-zhexian" style="width:705px;height:308px;"></div>
+    </div>
+<script src="../../js/template/middle/1zhexian.js"></script>

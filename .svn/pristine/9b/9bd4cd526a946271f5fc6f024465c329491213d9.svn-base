@@ -1,0 +1,220 @@
+function zcyh(res){
+    // dasidhai
+    var params = {
+        users: '',
+        woman: '',
+        man: '',
+        bj: [],
+        yn: '',
+        zj: ''
+    };
+    params.users = res[0].blockOne.resultOne.sz;
+
+    // params.woman = res[0].blockOne.resultTwo[0].sz;
+
+    var date = res[0].blockOne.resultTwo;
+    for(var i in date){
+        if(date[i].mc == '女'){
+            params.woman = parseInt(date[i].sz)
+            // console.log(date[i].sz)
+        }else if(date[i].mc == '男'){
+            params.man = parseInt(date[i].sz)
+        }
+    }
+
+    var pro = res[0].blockOne.resultThree;
+    var array = [];
+    for(var j in pro){
+        params.bj.push(pro[j].mc)
+        array.push({"name":pro[j].mc,"value":pro[j].sz})
+
+        
+        // if(pro[j].mc == "北京"){
+        //     params.bj = pro[j].sz;
+        // } else if(pro[j].mc == "云南"){
+        //     params.yn = pro[j].sz;
+        // } else if(pro[j].mc == "浙江"){
+        //     params.zj = pro[j].sz;
+        // }
+    }
+    // params.bj = res[0].blockOne.resultThree[2].sz;
+    // params.yn = res[0].blockOne.resultThree[1].sz;
+    // params.zj = res[0].blockOne.resultThree[0].sz;
+
+    //注册用户数
+    var res = '';
+    if(params.users.length<5) {
+        var k = 5-params.users.length;
+        for(var i=0;i<k;i++) {
+            res +='<li>0</li>';
+        }
+        for(var i=0;i<params.users.length;i++) {
+            res += '<li>'+params.users.substr(i,1)+'</li>'
+        }
+    }else{
+        for(var i=0;i<params.users.length;i++) {
+            res += '<li>'+params.users.substr(i,1)+'</li>'
+        }
+    }
+    $('#zc-users').html(res);
+    //男女百分比
+    // if(params.man.indexOf("%") == -1){
+        $('#man').html(params.man+"%");
+        $('#woman').html(params.woman+"%");
+    // } else {
+    //     $('#man').html(params.man);
+    //     $('#woman').html(params.woman);
+    // }
+    
+    //饼图
+    zcyhs(array,params.bj);
+}
+    
+function zcyhs(pro,_text){
+    console.log(_text)
+    var myZcyh = echarts.init(document.getElementById("zcyh"));
+    // var city = [bj,yn,zj];
+    // function citys(a,b) {
+    //     return a-b;
+    // }
+    // console.log(city.sort(citys));
+
+    // data = [{
+    //     'name': '浙江省',
+    //     'value': zj
+    // }, {
+    //     'name': '云南省',
+    //     'value': yn
+    // }, {
+    //     'name': '北京市',
+    //     'value': bj
+    // }]
+    data = pro;
+    // console.log(data)
+    let seriesObjs = [];
+    let r = 100;
+    let color = [
+        new echarts.graphic.LinearGradient(
+            0, 1, 1, 1,
+            [
+                { offset: 0, color: '#45e791' },
+                { offset: 1, color: '#98db68' }
+            ]
+        ),
+        new echarts.graphic.LinearGradient(
+            0, 1, 1, 1,
+            [
+                { offset: 0, color: '#eb7a43' },
+                { offset: 1, color: '#f5cc7a' }
+            ]
+        ),
+        new echarts.graphic.LinearGradient(
+            0, 1, 1, 1,
+            [
+                { offset: 0, color: '#20f1f8' },
+                { offset: 1, color: '#6068f3' }
+            ]
+        )
+    ];
+    let placeHolderStyle = {
+        normal: {
+            label: {
+                show: false,
+                position: 'center'
+            },
+            labelLine: {
+                show: false
+            },
+            color: 'rgba(0, 0, 0, 0)',
+            borderColor: 'rgba(0, 0, 0, 0)',
+            borderWidth: 0
+        }
+    }
+    for (let i = 0; i < data.length; i++) {
+        let seriesObj = {
+            name: data[i].name,
+            type: 'pie',
+            clockWise: false,
+            radius: [r - 1 - i * 20, r - i * 20],
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    borderWidth: 8,
+                    shadowBlur: 50,
+                    borderColor: color[i],
+                    shadowColor: 'rgba(142,152,241, 0.6)'
+                }
+            },
+            hoverAnimation: true,
+            data: [{
+                value: data[i].value
+            }, {
+                value: data[0].value * 30 / data[i].value,
+                // name: 'invisible',
+                itemStyle: placeHolderStyle
+            }]
+        }
+        seriesObjs.push(seriesObj)
+    }
+    option = {
+        // backgroundColor: '#011A2E',
+        "tooltip": {
+                "trigger": "item",
+                formatter: '{a} : {c}',
+                show:true
+            },
+            // "calculable": true,
+            color : [
+                new echarts.graphic.LinearGradient(
+                    0, 1, 1, 1,
+                    [
+                        { offset: 0, color: '#45e791' },
+                        { offset: 1, color: '#98db68' }
+                    ]
+                ),
+                new echarts.graphic.LinearGradient(
+                    0, 1, 1, 1,
+                    [
+                        { offset: 0, color: '#eb7a43' },
+                        { offset: 1, color: '#f5cc7a' }
+                    ]
+                ),
+                new echarts.graphic.LinearGradient(
+                    0, 1, 1, 1,
+                    [
+                        { offset: 0, color: '#20f1f8' },
+                        { offset: 1, color: '#6068f3' }
+                    ]
+                )
+            ],
+            "legend": {
+                type:"scroll",
+                itemWidth:20,
+                itemHeight:10,
+                orient:'vertical',
+                bottom:30,
+                right:40,
+                data:_text,
+                // data: [
+                //     "浙江省",
+                //     "云南省",
+                //     "北京市",
+                // ],
+                textStyle: {
+                    color: "#bdcee5",
+                    fontSize:10.5                
+                }
+            },
+        series: seriesObjs
+    }
+    myZcyh.setOption(option);
+    window.onresize = function(){
+        myZcyh.resize();
+    }
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bm.dp.dao.LeftQueryDao">
+
+
+
+    <select id="ajsAllSelect" resultType="java.lang.Integer">
+        select sum(case_num) from dw_law_case
+    </select>
+
+    <select id="sucajsSelect" resultType="java.lang.Integer">
+        select sum(suc_num) from dw_law_case
+    </select>
+
+
+    <!--所有响应案件-->
+    <select id="syajAll" resultType="java.lang.Integer">
+        select COUNT(is_timely) FROM dw_law_case
+    </select>
+
+    <!--及时响应案件-->
+    <select id="jsxyajSelect" resultType="java.lang.Integer">
+        select COUNT(is_timely) FROM dw_law_case where is_timely = 0
+    </select>
+
+    <select id="mdjflxSelect" resultType="com.bm.dp.vo.BaseDataVO">
+          select case_type mc,COUNT(case_type) sz from dw_law_case GROUP BY mc ORDER BY sz DESC LIMIT 0,6
+    </select>
+
+
+    <!--纠纷来源-->
+    <select id="mdjflySelect" resultType="com.bm.dp.vo.BaseDataVO">
+        select ORIGIN mc,COUNT(ORIGIN) sz from dw_law_case GROUP BY mc ORDER BY sz DESC LIMIT 0 ,3
+    </select>
+
+
+    <!--最优调解top10-->
+
+    <select id="zytjTopTen" resultType="com.bm.dp.vo.BaseDataVO">
+        SELECT SUM(suc_num) sz, area_name mc from dw_law_case GROUP BY mc ORDER BY sz DESC LIMIT 0,10
+    </select>
+
+    <!--矛盾纠纷来源总数-->
+    <select id="mdjflyAll" resultType="java.lang.Integer">
+        select count(origin) from dw_law_case
+    </select>
+
+
+
+
+</mapper>

@@ -1,0 +1,54 @@
+.fwjg {
+  margin: 0 auto;
+  padding-top: 8px;
+  width: 467px;
+  height: 279px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.fwjg .fwjgData,
+.fwjg #tjy {
+  position: relative;
+  margin: 0 auto;
+  width: 96%;
+  height: 100%;
+}
+.fwjg .fwjgData table,
+.fwjg #tjy table {
+  width: 100%;
+  height: auto;
+}
+.fwjg .fwjgData table tr,
+.fwjg #tjy table tr {
+  width: 100%;
+  height: 43px;
+}
+.fwjg .fwjgData table tr td,
+.fwjg #tjy table tr td {
+  max-width: 200px;
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.fwjg .fwjgData table tr td:nth-child(1),
+.fwjg #tjy table tr td:nth-child(1) {
+  font-family: "impact";
+  color: #10f6e9;
+}
+.fwjg .fwjgData table tr td:nth-child(3),
+.fwjg #tjy table tr td:nth-child(3) {
+  font-family: "impact";
+  color: #10f6e9;
+}
+.fwjg .fwjgData table tr:nth-child(odd),
+.fwjg #tjy table tr:nth-child(odd) {
+  background: #123a72;
+}
+.fwjg #tjy {
+  display: none;
+}

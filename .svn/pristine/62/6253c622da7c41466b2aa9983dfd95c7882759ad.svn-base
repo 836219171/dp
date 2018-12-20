@@ -1,0 +1,17 @@
+.ptfwlbh {
+  position: relative;
+  width: 100%;
+  height: 225px;
+}
+.ptfwlbh .bg {
+  position: absolute;
+  top: 18px;
+  left: 62px;
+}
+.ptfwlbh #traffic-variation {
+  position: absolute;
+  top: -39px;
+  left: -32px;
+  width: 885px;
+  height: 250px;
+}

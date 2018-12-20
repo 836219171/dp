@@ -1,0 +1,33 @@
+package com.bm.dp.config;
+
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
+
+/**
+ * @author xiao liang
+ * @version V1.0
+ * @Package com.bm.dp.config
+ * @Title: MyBatisConfig
+ * @Description: TODO
+ * @date 2018/9/25 9:26
+ */
+@Configuration
+public class MyBatisConfig {
+    /**
+     * Title: dataSource1
+     * Description: TODO
+     * @return
+     * DataSource
+     * remark : prefix 为 application.properteis中对应属性的前缀
+     */
+    @Bean(name = "db1")
+    @ConfigurationProperties(prefix = "spring.datasource.db1")
+    public DataSource dataSource1() {
+        return DataSourceBuilder.create().build();
+    }
+
+}

@@ -1,0 +1,21 @@
+// html,
+// body {
+//     width: 100%;
+//     height: 100%;
+//     background: hsl(210, 83%, 23%);
+// }
+.line-Chart {
+    position: absolute;
+    left: -20px;
+    width: 100%;
+    height: 280px;
+    img {
+        position: absolute;
+        top: 60px;
+        left: 75px;
+    }
+    #middle-zhexian {
+        width: 705px;
+        height: 308px;
+    }
+}
