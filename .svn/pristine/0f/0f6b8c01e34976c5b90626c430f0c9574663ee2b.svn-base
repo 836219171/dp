@@ -1,8 +1,0 @@
-
-<link rel="stylesheet" href="../../css/template/right/5sfqrl.css">
-    <div class="sfqr-bar">
-        <img src="../../img/sfqr-bg.png">
-        <div id="sfqr-bars" style="width:467px;height:284px"></div>
-    </div>
-<script src='../../js/echarts/echarts-bar3d.js'></script>
-<script src="../../js/template/right/5sfqrl.js"></script>
