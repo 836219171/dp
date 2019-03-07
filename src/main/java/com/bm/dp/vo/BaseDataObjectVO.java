@@ -1,5 +1,7 @@
 package com.bm.dp.vo;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import lombok.Data;
 
 /**
@@ -14,6 +16,7 @@ import lombok.Data;
 public class BaseDataObjectVO {
     private Object mc;
     private Object sz;
+
 }
 
 
